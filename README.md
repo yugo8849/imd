@@ -1,5 +1,4 @@
 # IMD
-<<<<<<< HEAD
 Intensity modulated display calculation using Python
 =======
 
@@ -15,14 +14,14 @@ A Python package for analyzing ratio images like FRET.
 ### 1: Clone from GitHub
 ```bash
 # Repository cloning
-git clone https://github.com/yourusername/IMD.git
+git clone https://github.com/yugo8849/imd.git
 cd IMD
 
 # Install with required packages
 pip install -e .
 ```
 ### 2: pip
-pip install git+https://github.com/yourusername/IMD.git
+pip install git+https://github.com/yugo8849/imd.git
 
 ## Usage
 See the example notebook in the examples directory.
