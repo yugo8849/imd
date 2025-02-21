@@ -34,4 +34,5 @@ See the example notebook in the examples directory.
 - scikit-image
 - opencv-python
 - pandas
+- napari
 >>>>>>> 4dc8e66 (Initial commit)
