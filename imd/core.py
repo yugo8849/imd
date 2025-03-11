@@ -3,6 +3,8 @@ IMD Image Generation module
 """
 
 import numpy as np
+import os
+from glob import glob
 import matplotlib.pyplot as plt
 from skimage import io, filters
 from skimage.draw import disk
@@ -15,6 +17,27 @@ import cv2
 from concurrent.futures import ThreadPoolExecutor
 from skimage.restoration import rolling_ball
 import napari
+
+def create_stack_from_folder(folder_path, pattern='*.tif'):
+    """Generation of Stacked images from folder"""
+    # Get file list with sorting
+    file_list = sorted(glob(os.path.join(folder_path, pattern)))
+    
+    if not file_list:
+        raise ValueError(f"No TIFF files found in {folder_path}")
+    
+    # Loading first image to check the size
+    first_img = io.imread(file_list[0])
+    height, width = first_img.shape
+    
+    # Initialize 3D array for image loading
+    stack = np.zeros((len(file_list), height, width), dtype=first_img.dtype)
+    
+    # Load images
+    for i, file_path in enumerate(file_list):
+        stack[i] = io.imread(file_path)
+        
+    return stack
 
 def create_imd(donor, acceptor, rmax=2.4, rmin=1.2, dmax=2000, dmin=10):
     """
